@@ -1,9 +1,9 @@
-package com.tlc.group.seven.reportingloggingservice.config;
+package com.tlc.group.seven.reportingloggingservice.config.kafka;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.tlc.group.seven.reportingloggingservice.model.LogData;
-import com.tlc.group.seven.reportingloggingservice.service.LogDataService;
+import com.tlc.group.seven.reportingloggingservice.logs.model.LogData;
+import com.tlc.group.seven.reportingloggingservice.logs.service.LogDataService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
-package com.tlc.group.seven.reportingloggingservice.repository;
+package com.tlc.group.seven.reportingloggingservice.logs.repository;
 
-import com.tlc.group.seven.reportingloggingservice.model.LogData;
+import com.tlc.group.seven.reportingloggingservice.logs.model.LogData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

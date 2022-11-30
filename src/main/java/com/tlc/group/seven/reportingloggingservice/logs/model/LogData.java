@@ -1,4 +1,4 @@
-package com.tlc.group.seven.reportingloggingservice.model;
+package com.tlc.group.seven.reportingloggingservice.logs.model;
 
 import lombok.*;
 

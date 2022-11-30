@@ -1,7 +1,7 @@
-package com.tlc.group.seven.reportingloggingservice.service;
+package com.tlc.group.seven.reportingloggingservice.logs.service;
 
-import com.tlc.group.seven.reportingloggingservice.model.LogData;
-import com.tlc.group.seven.reportingloggingservice.repository.LogDataRepository;
+import com.tlc.group.seven.reportingloggingservice.logs.model.LogData;
+import com.tlc.group.seven.reportingloggingservice.logs.repository.LogDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

@@ -1,7 +1,7 @@
-package com.tlc.group.seven.reportingloggingservice.controller;
+package com.tlc.group.seven.reportingloggingservice.logs.controller;
 
-import com.tlc.group.seven.reportingloggingservice.model.LogData;
-import com.tlc.group.seven.reportingloggingservice.service.LogDataService;
+import com.tlc.group.seven.reportingloggingservice.logs.model.LogData;
+import com.tlc.group.seven.reportingloggingservice.logs.service.LogDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
