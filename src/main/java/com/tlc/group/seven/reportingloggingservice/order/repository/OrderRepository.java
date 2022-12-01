@@ -11,5 +11,8 @@ import java.util.List;
 @Repository
 public interface OrderRepository extends JpaRepository<Order, Long> {
     @Query(value = "SELECT * from orders where side = ?1", nativeQuery = true)
-    List<Order> findOrderBySide(String side);
+    List<Order> findOrderBySide1(String side);
+
+    @Query(value = "select * from orders where side like :side%", nativeQuery = true)
+    List<Order> findOrderBySide(@Param("side") String side);
 }
