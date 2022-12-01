@@ -16,4 +16,8 @@ public class OrderService {
     public List<Order> getOrders(){
         return orderRepository.findAll();
     }
+
+    public List<Order> findOrderBySide(String side){
+        return orderRepository.findOrderBySide(side);
+    }
 }
