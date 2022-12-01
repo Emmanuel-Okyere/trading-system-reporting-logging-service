@@ -21,9 +21,7 @@ public class OrderController {
     @RequestMapping("/orders")
     public ResponseEntity<List<Order>> getOrders(){
         if (orderService.getOrders().isEmpty()){
-            return ResponseEntity.noContent().build();
-        }else if(!getOrders().hasBody()){
-            return ResponseEntity.internalServerError().build();
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
         }
         return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrders());
     }
