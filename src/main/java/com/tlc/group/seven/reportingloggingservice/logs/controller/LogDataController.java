@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/api/v1/admin/reporting")
+@RequestMapping("/api/v1/admin/reports")
 public class LogDataController {
     @Autowired
     private LogDataService dataService;
