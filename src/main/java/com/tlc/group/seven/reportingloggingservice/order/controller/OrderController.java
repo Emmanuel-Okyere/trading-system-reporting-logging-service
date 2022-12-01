@@ -3,6 +3,8 @@ package com.tlc.group.seven.reportingloggingservice.order.controller;
 import com.tlc.group.seven.reportingloggingservice.order.model.Order;
 import com.tlc.group.seven.reportingloggingservice.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,7 +19,12 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/orders")
-    public List<Order> getOrders(){
-        return orderService.getOrders();
+    public ResponseEntity<List<Order>> getOrders(){
+        if (orderService.getOrders().isEmpty()){
+            return ResponseEntity.noContent().build();
+        }else if(!getOrders().hasBody()){
+            return ResponseEntity.internalServerError().build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrders());
     }
 }
