@@ -2,6 +2,7 @@ package com.tlc.group.seven.reportingloggingservice.order.model;
 
 import com.tlc.group.seven.reportingloggingservice.user.model.User;
 import lombok.Data;
+import lombok.ToString;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
@@ -11,6 +12,7 @@ import java.util.Date;
 @Data
 @Entity
 @Table(name = "orders")
+@ToString
 public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,22 +27,6 @@ public class Order {
     private String orderId;
     private Date createdAt;
     private Date updatedAt;
-
-    @Override
-    public String toString() {
-        return "Order{" +
-                "iD=" + iD +
-                ", product='" + product + '\'' +
-                ", quantity=" + quantity +
-                ", price=" + price +
-                ", type='" + type + '\'' +
-                ", side='" + side + '\'' +
-                ", orderId='" + orderId + '\'' +
-                ", createdAt=" + createdAt +
-                ", updatedAt=" + updatedAt +
-                ", users=" + users +
-                '}';
-    }
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id")
