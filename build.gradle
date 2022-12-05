@@ -21,6 +21,7 @@ dependencies {
 	//implementation 'org.springframework.boot:spring-boot-starter-security'
 	implementation 'com.auth0:java-jwt:4.2.1'
 	implementation 'org.springframework.kafka:spring-kafka'
+	implementation 'no.skatteetaten.aurora.mockmvc.extensions:mockmvc-extensions-kotlin:0.2.2'
 	runtimeOnly 'org.postgresql:postgresql'
 	compileOnly 'org.projectlombok:lombok:1.18.24'
 	annotationProcessor 'org.projectlombok:lombok:1.18.24'
