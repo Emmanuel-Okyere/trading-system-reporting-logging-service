@@ -32,7 +32,6 @@ public class OrderControllerTest {
 
     @Test
     public void givenOrders_whenGetOrders_thenReturnJsonArray() throws Exception {
-        ArrayList<Order> orders = new ArrayList<>();
         Order order1 = new Order();
         User user = new User();
         user.setName("Emmanuel Ametepee");
@@ -51,7 +50,9 @@ public class OrderControllerTest {
         order1.setCreatedAt(new Date());
         order1.setUpdatedAt(new Date());
 
-        orders.add(order1);
+        List<Order> orders = List.of(
+                order1
+        );
 
         doReturn(orders).when(orderService).getOrders();
 
