@@ -1,9 +1,9 @@
-package com.tlc.group.seven.reportingloggingservice.controller;
+package com.tlc.group.seven.reportingloggingservice.controller.order;
 
 import com.tlc.group.seven.reportingloggingservice.order.model.Order;
 import com.tlc.group.seven.reportingloggingservice.order.service.OrderService;
 import com.tlc.group.seven.reportingloggingservice.user.model.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -13,6 +13,7 @@ import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.Mockito.doReturn;
@@ -30,12 +31,12 @@ public class OrderControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void getOrdersTest() throws Exception {
+    public void givenOrders_whenGetOrders_thenReturnJsonArray() throws Exception {
         ArrayList<Order> orders = new ArrayList<>();
         Order order1 = new Order();
         User user = new User();
         user.setName("Emmanuel Ametepee");
-        user.setID(1L);
+        user.setID(135L);
         user.setBalance(0.0);
         user.setEmail("emmanuel.metepee@turntabl.io");
         user.setCreatedAt(new Date());
@@ -51,14 +52,15 @@ public class OrderControllerTest {
         order1.setUpdatedAt(new Date());
 
         orders.add(order1);
+
         doReturn(orders).when(orderService).getOrders();
 
-        mockMvc.perform(get("/orders"))
+        mockMvc.perform(get("/api/v1/admin/reports/orders"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-
                 .andExpect(jsonPath("$", hasSize(1)))
-                .andExpect(jsonPath("$[0].title").value("Order1"));
+                .andExpect(jsonPath("$[0].orderId").value("46fy7gj99kj")
+                );
     }
 
 }
