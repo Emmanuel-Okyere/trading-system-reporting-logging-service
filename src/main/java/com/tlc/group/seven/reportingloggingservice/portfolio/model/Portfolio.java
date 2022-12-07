@@ -12,14 +12,11 @@ import javax.persistence.*;
 @Table
 public class Portfolio {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long iD;
-    @NotNull
     private String name;
     private Double balance;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id")
     private User users;
 }
