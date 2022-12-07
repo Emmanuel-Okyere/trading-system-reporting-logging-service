@@ -23,24 +23,22 @@ public class Order {
     private Long iD;
 
     private String product;
-    @NotNull
+
     private Integer quantity;
-    @NotNull
+
     private Double price;
 
     private String type;
 
     private String side;
-    @Column
+
     private String orderId;
-    @CreationTimestamp
+
     private Date createdAt;
-    @UpdateTimestamp
+
     private Date updatedAt;
-    @JsonIgnoreProperties
-    @NotNull
-    @Transient
-    private Long portfolioId;
+
+
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "portfolio_id")
