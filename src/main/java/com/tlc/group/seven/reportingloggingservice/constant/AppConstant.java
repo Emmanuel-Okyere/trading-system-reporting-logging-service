@@ -10,6 +10,7 @@ public interface AppConstant {
 
     String successStatus = "00";
     String failureStatus = "01";
+    String noContentStatus = "204";
     String getDataSuccessMessage = "Get data successfully.";
     String getNoDataAvailableMessage = "No data available.";
 }

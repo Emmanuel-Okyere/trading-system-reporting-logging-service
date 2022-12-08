@@ -16,9 +16,8 @@ public class StatisticsController {
     private StatisticsService statisticsService;
 
     @RequestMapping("/statistics")
-    public ResponseEntity<Statistics> getStatistics(){
-        Statistics statistics = new Statistics(statisticsService.getTotalUsers(), statisticsService.getTotalOrders(), statisticsService.getTotalBuyOrders(),statisticsService.getTotalSellOrders(), statisticsService.getTotalLog());
-        return ResponseEntity.status(HttpStatus.OK).body(statistics);
+    public ResponseEntity<?> getStatistics(){
+        return statisticsService.getStatistics();
     }
 
 }

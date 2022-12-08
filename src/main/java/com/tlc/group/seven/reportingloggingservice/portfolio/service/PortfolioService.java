@@ -19,7 +19,7 @@ public class PortfolioService {
 
     public ResponseEntity<?> getUserPortfolio(){
         if(portfolioRepository.findAll().isEmpty()){
-            Map<?, ?> responseBody = Map.of("status", "200", "data", AppConstant.getNoDataAvailableMessage);
+            Map<?, ?> responseBody = Map.of("status", AppConstant.noContentStatus, "data", AppConstant.getNoDataAvailableMessage);
             return ResponseEntity
                     .status(HttpStatus.NO_CONTENT)
                     .body(responseBody);

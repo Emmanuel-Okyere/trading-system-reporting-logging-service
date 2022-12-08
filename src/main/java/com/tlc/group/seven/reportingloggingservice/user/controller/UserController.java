@@ -18,10 +18,7 @@ public class UserController {
     private UserService userService;
 
     @RequestMapping("/users")
-    public ResponseEntity<List<User>> getUsers(){
-        if (userService.getUsers().isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(userService.getUsers());
+    public ResponseEntity<?> getUsers(){
+        return userService.getUsers();
     }
 }
