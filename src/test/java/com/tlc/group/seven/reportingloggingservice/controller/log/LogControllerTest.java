@@ -1,7 +1,7 @@
 package com.tlc.group.seven.reportingloggingservice.controller.log;
 
-import com.tlc.group.seven.reportingloggingservice.logs.model.LogData;
-import com.tlc.group.seven.reportingloggingservice.logs.service.LogDataService;
+import com.tlc.group.seven.reportingloggingservice.logs.model.SystemLog;
+import com.tlc.group.seven.reportingloggingservice.logs.service.SystemLogService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -24,7 +24,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class LogControllerTest {
 
     @MockBean
-    LogDataService logDataService;
+    SystemLogService systemLogService;
 
     @Autowired
     private MockMvc mockMvc;
@@ -32,17 +32,17 @@ public class LogControllerTest {
     @Test
     public void givenLogs_whenGetLogs_thenReturnJsonArray() throws Exception {
 
-        LogData logData1 = new LogData("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
-        LogData logData2 = new LogData("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
-        LogData logData3 = new LogData("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
+        SystemLog systemLog1 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
+        SystemLog systemLog2 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
+        SystemLog systemLog3 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
 
-        List<LogData> logs = List.of(
-                logData1,
-                logData2,
-                logData3
+        List<SystemLog> logs = List.of(
+                systemLog1,
+                systemLog2,
+                systemLog3
         );
 
-        given(logDataService.getLogData()).willReturn(logs);
+        given(systemLogService.getLogData()).willReturn(logs);
 
         mockMvc.perform(get("/api/v1/admin/reports/logs"))
                 .andExpect(status().isOk())

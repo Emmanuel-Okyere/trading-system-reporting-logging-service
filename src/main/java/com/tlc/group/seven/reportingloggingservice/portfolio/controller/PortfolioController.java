@@ -1,4 +1,4 @@
-package com.tlc.group.seven.reportingloggingservice.portfolio;
+package com.tlc.group.seven.reportingloggingservice.portfolio.controller;
 
 import com.tlc.group.seven.reportingloggingservice.constant.AppConstant;
 import com.tlc.group.seven.reportingloggingservice.portfolio.model.Portfolio;

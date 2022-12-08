@@ -17,18 +17,12 @@ public class OrderController {
     private OrderService orderService;
 
     @RequestMapping("/orders")
-    public ResponseEntity<List<Order>> getOrders(){
-        if (orderService.getOrders().isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.getOrders());
+    public ResponseEntity<?> getOrders(){
+        return orderService.getOrders();
     }
 
     @RequestMapping("/orders/by")
-    public ResponseEntity<List<Order>> getBuySellOrders(@RequestParam String side){
-        if (orderService.findOrderBySide(side).isEmpty()){
-            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-        }
-        return ResponseEntity.status(HttpStatus.OK).body(orderService.findOrderBySide(side));
+    public ResponseEntity<?> getBuySellOrders(@RequestParam String side){
+        return orderService.findOrderBySide(side);
     }
 }

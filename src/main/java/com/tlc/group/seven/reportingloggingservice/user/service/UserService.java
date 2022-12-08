@@ -18,7 +18,7 @@ public class UserService {
         if(userRepository.findAll().isEmpty()){
             Map<?, ?> responseBody = Map.of("status", AppConstant.noContentStatus, "data", AppConstant.getNoDataAvailableMessage);
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.OK)
                     .body(responseBody);
         }
         Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", userRepository.findAll());

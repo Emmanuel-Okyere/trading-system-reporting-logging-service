@@ -1,7 +1,7 @@
 package com.tlc.group.seven.reportingloggingservice.statistics.service;
 
 import com.tlc.group.seven.reportingloggingservice.constant.AppConstant;
-import com.tlc.group.seven.reportingloggingservice.logs.repository.LogDataRepository;
+import com.tlc.group.seven.reportingloggingservice.logs.repository.SystemLogRepository;
 import com.tlc.group.seven.reportingloggingservice.order.repository.OrderRepository;
 import com.tlc.group.seven.reportingloggingservice.portfolio.repository.PortfolioRepository;
 import com.tlc.group.seven.reportingloggingservice.user.repository.UserRepository;
@@ -21,7 +21,7 @@ public class StatisticsService {
     private OrderRepository orderRepository;
 
     @Autowired
-    private LogDataRepository logDataRepository;
+    private SystemLogRepository systemLogRepository;
 
     @Autowired
     private PortfolioRepository portfolioRepository;
@@ -43,7 +43,7 @@ public class StatisticsService {
     }
 
     public int getTotalLog(){
-        return logDataRepository.findAll().size();
+        return systemLogRepository.findAll().size();
     }
     public int getTotalPortfolio(){
         return portfolioRepository.findAll().size();
@@ -52,9 +52,9 @@ public class StatisticsService {
 
     public ResponseEntity<?> getStatistics(){
         if(portfolioRepository.findAll().isEmpty()){
-            Map<?, ?> responseBody = Map.of("status", AppConstant.failureStatus, "data", AppConstant.getNoDataAvailableMessage);
+            Map<?, ?> responseBody = Map.of("status", AppConstant.failureStatus, "message", AppConstant.getNoDataAvailableMessage);
             return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
+                    .status(HttpStatus.OK)
                     .body(responseBody);
         }
         Map<?, ?> statistics = Map.of("users", getTotalUsers(), "orders", getTotalOrders(), "portfolios", getTotalPortfolio(), "sellOrders", getTotalSellOrders(), "buyOrders", getTotalBuyOrders(), "systemLog", getTotalLog());
