@@ -13,8 +13,7 @@ import javax.persistence.*;
 public class Portfolio {
     @Id
     private Long iD;
-    private String name;
-    private Double balance;
+    private String ticker;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id")
