@@ -1,14 +1,14 @@
 package com.tlc.group.seven.reportingloggingservice.order.controller;
 
-import com.tlc.group.seven.reportingloggingservice.order.model.Order;
 import com.tlc.group.seven.reportingloggingservice.order.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
-import java.util.List;
-
+@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping("/api/v1/admin/reports")
 public class OrderController {
