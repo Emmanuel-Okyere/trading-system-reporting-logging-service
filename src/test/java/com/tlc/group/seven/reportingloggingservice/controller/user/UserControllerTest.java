@@ -1,5 +1,6 @@
 package com.tlc.group.seven.reportingloggingservice.controller.user;
 
+import com.tlc.group.seven.reportingloggingservice.constant.AppConstant;
 import com.tlc.group.seven.reportingloggingservice.user.model.User;
 import com.tlc.group.seven.reportingloggingservice.user.service.UserService;
 import org.junit.jupiter.api.Test;
@@ -7,11 +8,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 import static org.hamcrest.Matchers.hasSize;
 import static org.mockito.BDDMockito.given;
@@ -41,7 +45,17 @@ public class UserControllerTest {
                 richmond
         );
 
-        given(userService.getUsers()).willReturn(users);
+        Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", users);
+        ResponseEntity r =  ResponseEntity
+                .status(HttpStatus.OK)
+                .body(responseBody);
+
+
+        ResponseEntity res =  ResponseEntity
+                .status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
+                .body(responseBody);
+
+        given(userService.getUsers()).willReturn(res );
 
         mockMvc.perform(get("/api/v1/admin/reports/users"))
                 .andExpect(status().isOk())

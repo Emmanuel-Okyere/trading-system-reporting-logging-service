@@ -40,7 +40,7 @@ public class OrderControllerTest {
         user.setEmail("emmanuel.metepee@turntabl.io");
         user.setCreatedAt(new Date());
         user.setUpdatedAt(new Date());
-        order1.setUser(user);
+        //order1.setUser(user);
         order1.setOrderId("46fy7gj99kj");
         order1.setType("LIMIT");
         order1.setPrice(1.25);

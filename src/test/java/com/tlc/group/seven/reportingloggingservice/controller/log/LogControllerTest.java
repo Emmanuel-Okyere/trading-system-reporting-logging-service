@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.test.web.servlet.MockMvc;
 
 import java.util.Date;
@@ -32,9 +34,9 @@ public class LogControllerTest {
     @Test
     public void givenLogs_whenGetLogs_thenReturnJsonArray() throws Exception {
 
-        SystemLog systemLog1 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
-        SystemLog systemLog2 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
-        SystemLog systemLog3 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing", new Date());
+        SystemLog systemLog1 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing");
+        SystemLog systemLog2 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing");
+        SystemLog systemLog3 = new SystemLog("login", "user triggered", "initializing user account creation.", "order-processing");
 
         List<SystemLog> logs = List.of(
                 systemLog1,
@@ -42,7 +44,9 @@ public class LogControllerTest {
                 systemLog3
         );
 
-        given(systemLogService.getLogData()).willReturn(logs);
+        ResponseEntity r = new ResponseEntity(HttpStatus.OK);
+
+        given(systemLogService.getSystemLog()).willReturn(r);
 
         mockMvc.perform(get("/api/v1/admin/reports/logs"))
                 .andExpect(status().isOk())
