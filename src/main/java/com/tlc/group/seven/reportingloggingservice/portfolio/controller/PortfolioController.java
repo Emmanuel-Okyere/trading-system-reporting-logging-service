@@ -23,6 +23,9 @@ public class PortfolioController {
 
     @RequestMapping
     public ResponseEntity<?> getUserPortfolio() {
-        return portfolioService.getUserPortfolio();
+        if (portfolioService.getUserPortfolio().isEmpty()){
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
+        return ResponseEntity.status(HttpStatus.OK).body(portfolioService.getUserPortfolio());
     }
 }
