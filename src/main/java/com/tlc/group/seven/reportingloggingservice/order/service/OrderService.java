@@ -17,29 +17,11 @@ public class OrderService {
     @Autowired
     private OrderRepository orderRepository;
 
-    public ResponseEntity<?> getOrders(){
-        if(orderRepository.findAll().isEmpty()){
-            Map<?, ?> responseBody = Map.of("status", AppConstant.noContentStatus, "data", AppConstant.getNoDataAvailableMessage);
-            return ResponseEntity
-                    .status(HttpStatus.NO_CONTENT)
-                    .body(responseBody);
-        }
-        Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", orderRepository.findAll());
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(responseBody);
+    public List<Order> getOrders(){
+        return orderRepository.findAll();
     }
 
-    public ResponseEntity<?> findOrderBySide(String side){
-        if(orderRepository.findOrderBySide(side).isEmpty()){
-            Map<?, ?> responseBody = Map.of("status", AppConstant.noContentStatus, "message", AppConstant.getNoDataAvailableMessage);
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(responseBody);
-        }
-        Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", orderRepository.findOrderBySide(side));
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(responseBody);
+    public List<Order> findOrderBySide(String side){
+        return orderRepository.findAll();
     }
 }
