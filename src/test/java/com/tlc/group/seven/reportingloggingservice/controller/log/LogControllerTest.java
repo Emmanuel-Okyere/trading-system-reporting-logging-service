@@ -44,9 +44,7 @@ public class LogControllerTest {
                 systemLog3
         );
 
-        ResponseEntity r = new ResponseEntity(HttpStatus.OK);
-
-        given(systemLogService.getSystemLog()).willReturn(r);
+        given(systemLogService.getSystemLog()).willReturn(logs);
 
         mockMvc.perform(get("/api/v1/admin/reports/logs"))
                 .andExpect(status().isOk())

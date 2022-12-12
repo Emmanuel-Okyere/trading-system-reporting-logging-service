@@ -20,18 +20,8 @@ public class SystemLogService {
         systemLogRepository.save(systemLog);
     }
 
-    public ResponseEntity<?> getSystemLog(){
-        if(systemLogRepository.findAll().isEmpty()){
-            Map<?, ?> responseBody = Map.of("status", AppConstant.noContentStatus, "message", AppConstant.getNoDataAvailableMessage);
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(responseBody);
-        }
-        Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", systemLogRepository.findAll());
-        return ResponseEntity
-                .status(HttpStatus.OK)
-                .body(responseBody);
+    public List<SystemLog> getSystemLog(){
+        return systemLogRepository.findAll();
     }
-
 
 }
