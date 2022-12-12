@@ -45,17 +45,7 @@ public class UserControllerTest {
                 richmond
         );
 
-        Map<?, ?> responseBody = Map.of("status", AppConstant.successStatus, "message", AppConstant.getDataSuccessMessage, "data", users);
-        ResponseEntity r =  ResponseEntity
-                .status(HttpStatus.OK)
-                .body(responseBody);
-
-
-        ResponseEntity res =  ResponseEntity
-                .status(HttpStatus.OK).contentType(MediaType.APPLICATION_JSON)
-                .body(responseBody);
-
-        given(userService.getUsers()).willReturn(res );
+        given(userService.getUsers()).willReturn(users);
 
         mockMvc.perform(get("/api/v1/admin/reports/users"))
                 .andExpect(status().isOk())
