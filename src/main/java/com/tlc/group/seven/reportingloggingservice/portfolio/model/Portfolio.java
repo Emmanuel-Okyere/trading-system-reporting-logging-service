@@ -14,6 +14,7 @@ public class Portfolio {
     @Id
     private Long iD;
     private String ticker;
+    private int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "users_id")
